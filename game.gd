@@ -19,3 +19,5 @@ func _input(event):
 		print(event)
 	if event.is_action_released("ui_end"):
 		get_tree().quit()
+	if event.is_action_released("ui_accept"):
+		emit_signal("set_down", $target)
