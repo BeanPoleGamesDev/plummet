@@ -1,11 +1,8 @@
 extends Spatial
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 signal rotate_view(rot)
 signal set_down(down)
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	self.connect("rotate_view", $player, "_on_rotate_view")
@@ -21,3 +18,4 @@ func _input(event):
 		get_tree().quit()
 	if event.is_action_released("ui_accept"):
 		emit_signal("set_down", $target)
+		print($player.location)
