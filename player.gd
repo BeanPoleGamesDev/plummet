@@ -1,10 +1,9 @@
-extends KinematicBody
+extends Spatial
 
-onready var view = get_node("view")
+onready var view = get_node("body/view")
 
 var down : Vector3
 var velocity : Vector3
-var location : Vector3
 var fall_speed = 0
 var move_speed = 40
 var current_rotation : Vector3
@@ -19,15 +18,15 @@ func _on_set_down(d: Spatial):
 func _on_rotate_view(rot: Vector3):
 	var added_rotation : Vector3
 	var r : Vector3
-	current_rotation = $view.get_rotation_degrees()
+	current_rotation = view.get_rotation_degrees()
 	added_rotation = rot * cam_rotation_speed
 	r.x = clamp(current_rotation.x + added_rotation.x, -cam_limit.x, cam_limit.x) 
 	r.y = clamp(current_rotation.y + added_rotation.y, -cam_limit.y, cam_limit.y) 
-	$view.set_rotation_degrees(r)
+	view.set_rotation_degrees(r)
 	
 func _physics_process(delta):
-	location = self.get_translation()
-	velocity.x = move_speed * -$view.get_rotation().y
-	velocity.z = move_speed * -$view.get_rotation().x
-	velocity.y = -fall_speed 
-	self.move_and_collide(velocity * delta)
+
+	velocity.y = move_speed * view.get_rotation().x
+	velocity.x = move_speed * -view.get_rotation().y
+	velocity.z = -fall_speed 
+	self.translate_object_local(velocity * delta)
