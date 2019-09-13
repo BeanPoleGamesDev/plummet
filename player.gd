@@ -1,33 +1,33 @@
-extends Spatial
+extends KinematicBody
 
-onready var head = get_node("body/head")
-onready var view = get_node("body/head/view")
-onready var body = get_node("body")
+onready var view = get_node("view")
 
-var down = Vector3(0,-10,0)
-var velocity = Vector3()
-var speed = 5
-var location = Vector3()
-var player_rot = Vector3()
+var down : Vector3
+var velocity : Vector3
+var location : Vector3
+var fall_speed = 0
+var move_speed = 40
+var current_rotation : Vector3
 
-const cam_rotation_speed = 0.2
-
-func get_player_rotation():
-	return Vector3(view.get_rotation().x,head.get_rotation().y,body.get_rotation().z)
-
+const cam_rotation_speed = 0.1
+const cam_limit = Vector2(85,85)
+	
 func _on_set_down(d: Spatial):
 	down = d.get_translation()
 	self.look_at(down,Vector3(0,1,0))
-	
+
 func _on_rotate_view(rot: Vector3):
-	view.rotate_x(deg2rad(rot.x * cam_rotation_speed))
-	head.rotate_y(deg2rad(rot.y * cam_rotation_speed))
-	body.rotate_z(deg2rad(rot.z * cam_rotation_speed))
+	var added_rotation : Vector3
+	var r : Vector3
+	current_rotation = $view.get_rotation_degrees()
+	added_rotation = rot * cam_rotation_speed
+	r.x = clamp(current_rotation.x + added_rotation.x, -cam_limit.x, cam_limit.x) 
+	r.y = clamp(current_rotation.y + added_rotation.y, -cam_limit.y, cam_limit.y) 
+	$view.set_rotation_degrees(r)
 	
 func _physics_process(delta):
-	player_rot = get_player_rotation()
 	location = self.get_translation()
-	# output needs to be between 1 and 0, input can be any distance speed
-	#print(speed/location.distance_to(down))
-	velocity.z = -speed 
-	self.translate(velocity)
+	velocity.x = move_speed * -$view.get_rotation().y
+	velocity.z = move_speed * -$view.get_rotation().x
+	velocity.y = -fall_speed 
+	self.move_and_collide(velocity * delta)

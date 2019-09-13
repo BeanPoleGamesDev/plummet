@@ -32,6 +32,11 @@ view_mouse={
 "events": [  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="player"
+3d_physics/layer_2="obstacles"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
