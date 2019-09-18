@@ -1,16 +1,79 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game.gd" type="Script" id=1]
 [ext_resource path="res://target.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://obstacle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://goal.tscn" type="PackedScene" id=5]
 
 [node name="game" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="target" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.4803, 24.114, 5.94405 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 307.375, 2.11602, 5.94405 )
 
 [node name="target2" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32.1115, 0.0867968 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
+fall_speed = 40
+
+[node name="obstacle" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.569158, 5.23385, 0, -0.164726, 18.0839, 0, 0, 0, 51.5247, 155.657, -16.601, -5.34127 )
+
+[node name="obstacle2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.573368, -4.74742, 0, 0.149417, 18.2176, 0, 0, 0, 51.5247, 178.352, 14.6625, -5.34127 )
+
+[node name="obstacle3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.672408, -0.769298, -7.57543, 0.236124, 2.19072, 21.5724, 0, -4.13882, 12.8266, 76.2736, -4.46395, -5.34127 )
+
+[node name="obstacle9" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.712662, 0, 0, 0, 4.67424, 4.52964, 0, -0.819955, 25.8217, 40.4165, -17.6916, -5.28947 )
+
+[node name="obstacle10" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.662845, 0.30118, -9.48466, 0, 4.67424, 4.52964, 0.26177, -0.762637, 24.0167, 29.4405, 3.60128, -5.34127 )
+
+[node name="obstacle11" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.692894, 0.267191, 5.95139, 0.166685, -1.11069, -24.7393, 0, 4.60607, -6.31076, 18.7329, 3.11476, -5.34127 )
+
+[node name="obstacle4" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.581372, -2.62469, -4.43482, 0, 1.38803, -25.0696, 0.412181, 3.70207, 6.25522, 108.657, -11.7466, -5.34127 )
+
+[node name="obstacle12" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.690445, -0.944586, 3.86696, 0.176556, 3.69393, -15.1223, 0, 2.82551, 21.0628, 132.495, 12.6578, 12.6055 )
+
+[node name="obstacle13" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.544965, 2.45695, -10.0583, -0.459238, 2.9156, -11.9359, 0, 2.82551, 21.0628, 52.4178, 12.6578, 12.6055 )
+
+[node name="obstacle14" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.712662, 0, 0, 0, 0.0462811, 26.2147, 0, -4.74539, 0.255668, 211.613, -16.4432, 12.6055 )
+
+[node name="obstacle15" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.712662, 0, 0, 0, -3.24388, 19.1351, 0, -3.46383, -17.92, 206.409, -16.4432, -27.3814 )
+
+[node name="obstacle16" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.583974, 1.58961, 12.1936, 0.408486, -2.27251, -17.4321, 0, 3.85094, -15.3204, 275.302, -16.4432, -27.3814 )
+
+[node name="obstacle17" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.058012, 3.40697, -18.1245, -0.617702, -1.38315, -10.6099, -0.350665, 3.00006, 15.6911, 275.302, -16.4432, 2.78479 )
+
+[node name="obstacle5" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.712662, 0, 0, 0, 4.66911, 4.68834, 0, -0.848684, 25.7934, 230.57, 10.5556, -30.4431 )
+
+[node name="obstacle6" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.712662, 0, 0, 0, 0.919819, -25.7188, 0, 4.65562, 5.08131, 231.428, -7.9297, -6.22136 )
+
+[node name="obstacle7" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.65714, 0.355941, -9.95239, -0.275778, 0.848159, -23.7151, 0, 4.65562, 5.08131, 230.57, -12.654, -52.3858 )
+
+[node name="obstacle8" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.617813, -0.459715, 12.8186, 0, 4.65514, 5.09479, -0.355238, -0.799515, 22.2936, 242.493, -36.0307, -17.7405 )
+
+[node name="goal" parent="." instance=ExtResource( 5 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 47.8658, -8.12126, 6.31459 )
+
+[node name="goal2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 235.321, -10.7861, -29.981 )
+
+[node name="goal3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 156.983, 8.61279, -11.8047 )

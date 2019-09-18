@@ -1,14 +1,14 @@
 extends Spatial
 
-onready var view = get_node("body/view")
+onready var view = get_node("view")
 
 var down : Vector3
 var velocity : Vector3
-var fall_speed = 0
-var move_speed = 40
+export var fall_speed: = 20
+export var move_speed: = 40
 var current_rotation : Vector3
 
-const cam_rotation_speed = 0.1
+export var cam_rotation_speed = 0.1
 const cam_limit = Vector2(85,85)
 	
 func _on_set_down(d: Spatial):
@@ -25,8 +25,20 @@ func _on_rotate_view(rot: Vector3):
 	view.set_rotation_degrees(r)
 	
 func _physics_process(delta):
-
 	velocity.y = move_speed * view.get_rotation().x
 	velocity.x = move_speed * -view.get_rotation().y
 	velocity.z = -fall_speed 
 	self.translate_object_local(velocity * delta)
+	
+func _on_object_collision(area: Area):
+	pass
+
+func kill()->void:
+	print("player died")
+	get_tree().reload_current_scene()
+
+func _on_hurt_box_area_entered(area: Area)->void:
+	self.kill()
+
+func _on_goal_box_area_entered(area: Area)->void:
+	print("point!")
