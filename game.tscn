@@ -13,7 +13,7 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 307.375, 2.11602, 5.94405 )
 
 [node name="target2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32.1115, 0.0867968 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.799065, -32.1115, 0.0867968 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 fall_speed = 40
