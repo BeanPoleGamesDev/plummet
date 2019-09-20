@@ -27,7 +27,7 @@ I want someone to be able to take a mesh of a city and use that as the obstacles
 
 #### 2. pre built obstacles
 
-someone added obstacles that are prebuilt with decorations and shapes in their level.
+someone added obstacles that are pre-built with decorations and shapes in their level.
 
 
 ## level.data

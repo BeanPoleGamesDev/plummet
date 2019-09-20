@@ -1,6 +1,6 @@
 # obstacles
 
-has a colision area 
+has a collision area 
 
-sends a singlial when a player colides with something
+sends a signal when a player collides with something
 
